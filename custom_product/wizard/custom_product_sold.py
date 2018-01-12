@@ -13,5 +13,5 @@ class CustomProductSold(models.TransientModel):
     def action_custom_product_sold_apply(self):
         products = self.env['custom.product'].browse(self.env.context.get('active_ids'))
         sold_qty = products.qty - self.qty
-        products.write({'lost_reason': sold_qty})
+        products.write({'qty': sold_qty})
         return products
